@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static "blogs/css/bootstrap.css" %}"/>
+    <link rel="stylesheet" href="{% static "blogs/css/bootstrap-theme.css" %}"/>
+</head>
+<body>
+{% if owner %}
+    <a href="{% url 'post_create' %}" class="btn btn-primary">Create post</a>
+{% else %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if is_subscribed %}
+            <input class="button_1 btn btn-primary" type="submit" value="Unsubscribe">
+        {% else %}
+            <input class="button_1 btn btn-primary" type="submit" value="Subscribe">
+        {% endif %}
+    </form>
+{% endif %}
+
+{% if posts %}
+    <h3>Post</h3>
+    <table class="table">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Created</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+        </tr>
+        {% for post in posts %}
+            <tr>
+                <td scope="row">{{ post.title }}</td>
+                <td>{{ post.data_created }}</td>
+                <td>{{ post.description }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% else %}
+    <h3>User post list is empty</h3>
+{% endif %}
+<script src={% static 'blogs/js/bootstrap.js' %}></script>
+<script src={% static 'blogs/js/main.js' %}></script>
+</body>
+</html>

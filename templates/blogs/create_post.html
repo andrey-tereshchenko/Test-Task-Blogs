@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+    <link rel="stylesheet" href="{% static "blogs/css/bootstrap.css" %}"/>
+    <link rel="stylesheet" href="{% static "blogs/css/bootstrap-theme.css" %}"/>
+    <link rel="stylesheet" href="{% static "blogs/css/style.css" %}"/>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in post_form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            <div >{{ field }}</div>
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <input class="button_1 btn btn-primary" type="submit" value="Create" >
+</form>
+<script src={% static 'blogs/js/bootstrap.js' %}></script>
+<script src={% static 'blogs/js/main.js' %}></script>
+</body>
+</html>

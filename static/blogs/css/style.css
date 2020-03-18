@@ -1,0 +1,12 @@
+.form-group {
+    margin-left: 5%;
+    max-width: 200px;
+}
+
+h3 {
+    margin-left: 5%;
+}
+
+.flex-container {
+    display: flex;
+}
