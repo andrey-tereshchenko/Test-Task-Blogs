@@ -62,7 +62,7 @@ class PostCreateView(View):
             path = request.build_absolute_uri('/').strip("/")
             path += '/blogs/post/detail/{}/'.format(post.id)
             # Uncomment the next line for sending mail after creation posts
-            # send_letter_to_user(blog, 'some path')
+            # send_letter_to_user(blog, path)
             return HttpResponse('OK! Created post with  id:{}'.format(post.id))
         else:
             return HttpResponse('Error data is not valid!')
